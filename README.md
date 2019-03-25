@@ -32,11 +32,13 @@
 
 ## 二、快速部署
 
-* `git@github.com:bestHAI/gitlab.git`
+* `git clone git@github.com:bestHAI/gitlab.git`
 
 * `cd gitlab`
 
 * `chmod +x auto_run.sh && ./auto_run.sh 【IP】 【域名】 【名称】` 
+
+* 后面的三个参数，缺一不可，因为都至关重要的
 
 ## 三、开放的端口
 
