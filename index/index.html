@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,shrink-to-fit=no">
+    <title>code_server_name</title>
+    <style>
+        body, html{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /* 不可被选中 */
+             -moz-user-select:none; /*火狐*/
+             -webkit-user-select:none; /*webkit浏览器*/
+             -ms-user-select:none; /*IE10*/
+             user-select:none;
+        }
+        .full{
+            width: 100%;
+            height: 100%;
+        }
+        .background{
+            background: url("/bg.jpg") no-repeat center center;
+            background-size:cover;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .center{
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .center-text{
+            color: rgb(255, 255, 255);
+        }
+        .inline-block{
+            display: flex;
+            justify-content: center;
+        }
+        .a-text{
+            color: white;
+            font-size: 25px;
+            margin: 50px 100px 0 100px;
+            padding: 10px;
+            text-decoration:none;
+            border: solid 1px white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="full">
+    <div class="background" id="img_bg">
+        <div class="center">
+
+            <div class="center-text" style="font-size: 150px;"> code_server_name </div>
+
+            <div class="inline-block">
+                <span class="center-text" style="font-size: 100px;">··· </span>
+                <div class="center-text" id="time" style="font-size: 120px;"
+                     data-time-type="24" ondblclick="change_time_type(this)"></div>
+                <div class="center-text" id="apm" style="font-size: 30px;padding-top: 95px;"></div>
+                <span class="center-text" style="font-size: 100px;"> ···</span>
+            </div>
+
+            <div id="show_text" class="center-text" style="font-size: 35px;" ondblclick="change_soft_words()"> Be yourself · Try your best </div>
+            <input id="show_text_input" class="center-text" type="text"
+               style="font-size: 35px; text-align: center; background-color: transparent;
+               display: none; width: 90%; max-width: 400px"
+               value="  Be yourself · Try your best "
+               onblur="input_finish()"
+               onkeypress="enter_key()">
+
+            <div class="inline-block">
+                <a class="a-text" href="http://mail.my_domain.com"> e-Mail </a>
+                <a class="a-text" href="http://gitlab.my_domain.com"> Gitlab </a>
+                <a class="a-text" href="http://my_domain.com/help.html"> 帮助文档 </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function change_time() {
+    var now_time = new Date();
+    var h = now_time.getHours();
+    var m = now_time.getMinutes();
+
+    var t = document.getElementById("time").getAttribute("data-time-type");
+    var ap_div = document.getElementById("apm");
+    var now_ap_str = ap_div.innerHTML;
+
+    var ap_str = '';
+    if (t === '12'){
+        if (h > 12) {
+            h = h - 12;
+            ap_str = 'PM';
+        } else {
+            ap_str = 'AM';
+        }
+    }
+    else {
+        if (h < 10) h = '0' + h;
+        ap_str = '';
+    }
+
+    if (m < 10) m = '0' + m;
+
+    var time_div = document.getElementById("time");
+    var time_str = h+":"+m;
+
+    var now_time_str = time_div.innerHTML;
+    if (now_time_str !== time_str){
+        time_div.innerHTML=time_str;
+    }
+    if (now_ap_str !== ap_str){
+        ap_div.innerHTML=ap_str;
+    }
+}
+
+function change_time_type(type) {
+    var t = type.getAttribute("data-time-type");
+    if (t === '24'){
+        type.setAttribute ('data-time-type' , '12');
+        change_time();
+    }else {
+        type.setAttribute ('data-time-type' , '24');
+        change_time();
+    }
+}
+
+function change_soft_words() {
+    var input_div = document.getElementById('show_text_input');
+    document.getElementById('show_text').style.display="none";
+    input_div.style.display="";
+    input_div.focus();
+}
+
+function enter_key() {
+    if(event.keyCode === 13){
+        input_finish();
+    }
+}
+
+function input_finish() {
+    var soft_div = document.getElementById('show_text');
+    var input_div = document.getElementById('show_text_input');
+
+    var input_str = input_div.value;
+    soft_div.style.display="";
+    soft_div.innerHTML=input_str;
+    input_div.style.display="none"
+}
+
+change_time();
+setInterval(change_time,1000);
+</script>
+</body>
+</html>

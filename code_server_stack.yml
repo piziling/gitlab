@@ -1,0 +1,89 @@
+version: "3"
+
+services:
+  gitlab:
+    image: "gitlab/gitlab-ce:latest"
+    networks:
+      server_network:
+        aliases:
+          - gitlab.my_domain.com
+    hostname: "gitlab.my_domain.com"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url "http://gitlab.my_domain.com"
+    volumes:
+      - "./gitlab/config:/etc/gitlab"
+      - "./gitlab/logs:/var/log/gitlab"
+      - "./gitlab/data:/var/opt/gitlab"
+      - "./gitlab/backup:/var/opt/gitlab/backups"
+      - "/etc/localtime:/etc/localtime:ro"
+
+  gitlab-runner:
+    image: "gitlab/gitlab-runner"
+    networks:
+      server_network:
+        aliases:
+          - runner.my_domain.com
+    volumes:
+      - "./gitlab-runner/config:/etc/gitlab-runner"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  mail:
+    image: "analogic/poste.io"
+    networks:
+      server_network:
+        aliases:
+          - mail.my_domain.com
+    hostname: "mail.my_domain.com"
+    environment:
+      - "HTTPS=OFF"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./mail/poste/data:/data"
+
+  portainer:
+    image: "portainer/portainer"
+    networks:
+      server_network:
+        aliases:
+          - portainer.my_domain.com
+    ports:
+      - "9000:9000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./portainer/data:/data"
+
+  nginx:
+    image: "nginx"
+    networks:
+      server_network:
+        aliases:
+          - nginx.my_domain.com
+    ports:
+      - "80:80"  # http
+      - "443:443"  # https
+      - "22:22"  # Gitlab ssh
+      - "29418:29418"  # Gerrit ssh
+      - "25:25"  # 邮箱端口 - start
+      - "143:143"
+      - "587:587"
+      - "993:993"
+      - "110:110"
+      - "465:465"
+      - "995:995"  # 邮箱端口 - end
+    depends_on:
+      - gitlab
+      - portainer
+      - mail
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./index:/home/index:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+
+networks:
+  server_network:
+    driver: overlay
+    external: true
+

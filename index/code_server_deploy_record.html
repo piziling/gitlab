@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>部署过程</title>
+    <link href="http://my_domain.com/css/md_style.css" rel="stylesheet">
+</head>
+<body>
+<div class="md_container">
+    <!---->
+    <h1> 代码服务器部署过程</h1>
+
+    <h2>〇、IP</h2>
+
+    <ul>
+        <li><p>如果 IP 变动，部分配置文件需要手动修改相应 IP 值</p>
+            <ul>
+                <li><p><code>当前文件</code> 【 第 27 行 】 【 第 29 行 】</p></li>
+                <li><p><code>index/start/域名解释配置脚本.bat</code> 【 第 2 行 】 【 第 3 行 】</p></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>一、启动</h2>
+
+    <ul>
+        <li><p>项目的根目录（注意：不是Linux的根目录，存放有 auto_run.sh 脚本的位置）</p></li>
+        <li><p>运行命令：<code>chmod +x auto_run.sh &amp;&amp; ./auto_run.sh</code></p></li>
+        <li><p>在网络正常的情况下，就上面一条命令就可以完成启动整个系统了</p></li>
+    </ul>
+
+    <h2>二、客户端配置</h2>
+
+    <ul>
+        <li><p>因为没有搭建统一的dns服务器，所以要在个人电脑上配置一下域名解释</p></li>
+        <li><p>下载并运行配置脚本即可</p>
+            <ul>
+                <li><p><a href="http://here.is.my.ip/">内网下载地址</a></p></li>
+                <li><p><a href="http://here.is.my.ip/">外网下载地址</a></p></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>三、服务端配置</h2>
+
+    <h3>1. portainer部分：</h3>
+
+    <ul>
+        <li><p><a href="http://portainer.my_domain.com/">点此进入portainer</a></p></li>
+        <li><p>5分钟内设置管理员的登陆密码</p></li>
+        <li><p>选择 docker 通讯方式和通讯地址</p></li>
+    </ul>
+
+    <h3>2. Gitlab设置部分</h3>
+
+    <ul>
+        <li><p>设置管理员密码</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/">初次进入Gitlab设置密码</a></p></li>
+            </ul>
+        </li>
+        <li><p>设置不允许用户注册，只能让管理员添加，防止出现账号混乱情况</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/application_settings#js-signup-settings">点此设置禁用注册</a></p>
+                </li>
+                <li><p>【 Sign-up restrictions 】 ===&gt; 【Sign-up enabled】 ===&gt; 取消勾选即可</p></li>
+            </ul>
+        </li>
+        <li><p>设置管理员邮箱，相关异常报告会发送到该邮箱</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/application_settings/reporting#js-abuse-settings">点此设置接收异常信息的邮箱</a>
+                </p></li>
+                <li><p>【 Abuse reports 】 ===&gt; 填写邮箱地址 ===&gt; 【 Save changes 】</p></li>
+            </ul>
+        </li>
+        <li><p>自定义界面，设置【 Logo、提示语、登陆跳转 】等等</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/appearance">点此进入设置界面 1</a></p></li>
+                <li><p><a href="http://gitlab.my_domain.com/admin/application_settings#js-signin-settings">点此进入设置界面 2</a>
+                </p></li>
+            </ul>
+        </li>
+        <li><p>添加群组</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/groups/new">点此创建群组</a></p></li>
+            </ul>
+        </li>
+        <li><p>添加成员</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/users/new">点此创建成员</a></p></li>
+                <li><p>注意：一般不允许普通用户可以创建群组</p></li>
+                <li><p>创建的成员会收到相应的邮件，从邮件链接中修改密码后，即可使用</p></li>
+                <li><p>成员设置 SSH Key 后才能正常使用 <code>git clone</code></p></li>
+            </ul>
+        </li>
+        <li><p>设置共享的 runners</p>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/admin/runners">点此管理 runners</a></p></li>
+                <li><p>进入 <code>./tools/</code> 目录下，输入：<code>./runner-register.sh 【名称】 【tokern】 【镜像名称】</code> 进行注册</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>3. Poste.io设置部分</h3>
+
+    <ul>
+        <li><p><a href="http://mail.my_domain.com/">点此进入poste.io</a></p></li>
+        <li><p>设置管理员密码</p></li>
+        <li><p>为Gitlab设置邮箱，用于自动发送相关邮件（账号密码要和<code>./gitlab/config/gitlab.rb</code>配置一样）</p></li>
+        <li><p>为成员添加相关邮箱</p></li>
+    </ul>
+
+    <!---->
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帮助文档</title>
+    <link href="http://my_domain.com/css/md_style.css" rel="stylesheet">
+</head>
+<body>
+<div class="md_container">
+    <!---->
+
+    <h1>code_server_name《帮助文档》</h1>
+
+    <hr/>
+
+    <h2>一、进入邮箱账号</h2>
+
+    <ul>
+        <li><p><a href="http://mail.my_domain.com/">点击进入邮箱</a></p></li>
+        <li><p>账号：<code>名字的全拼@my_domain.com</code></p></li>
+        <li><p>密码：<code>12345678</code></p></li>
+        <li><p>暂不支持用户更改密码</p></li>
+    </ul>
+
+    <h2>二、确认Gitlab账号</h2>
+
+    <ul>
+        <li><p>gitlab不支持用户自己注册账号，只能由管理员增添</p></li>
+        <li><p>管理员添加账号后，在个人邮箱里会收到相应邮件</p></li>
+        <li><p>按照邮件提示，进入相关链接，设置密码，确认账号即可</p></li>
+    </ul>
+
+    <h2>三、Gitlab 中文设置</h2>
+
+    <ul>
+        <li><p>先登陆 gitlab</p></li>
+        <li><p><a href="http://gitlab.my_domain.com/profile">点击这里跳转</a></p></li>
+        <li><p>找到 【Preferred language】 设置为 【简体中文】</p></li>
+        <li><p>刷新页面即可</p></li>
+        <li><p>提示：同一页面有更多个性化的设置，例如：头像等用户资料</p></li>
+    </ul>
+
+    <h2>四、设置 SSH 密钥</h2>
+
+    <ul>
+        <li><p>为什么要设置 ssh 密钥？因为在本地电脑使用 <code>git clone</code> 命令时需要认证</p></li>
+        <li><p>在自己的电脑上生成密钥，步骤如下：</p>
+            <ul>
+                <li><p>进入 cmd 命令行</p></li>
+                <li><p>输入命令：<code>ssh-keygen</code>，期间会要填写一些信息，一路回车确认，保持默认即可</p></li>
+                <li><p>打开文件：<code>C:\Users\【这里替换成你的电脑名称】\.ssh\id_rsa.pub</code></p></li>
+                <li><p>把内容复制到下面链接的信息框内</p></li>
+            </ul>
+            <ul>
+                <li><p><a href="http://gitlab.my_domain.com/profile/keys">点击设置个人密钥</a></p></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>五、更多帮助文档</h2>
+
+    <ul>
+        <li><p><a href="http://gitlab.my_domain.com/help">Gitlab 官方文档（英文原版）</a></p></li>
+        <li><p><a href="http://my_domain.com/gitlab/index.html"> 代码服务器指引</a></p></li>
+    </ul>
+
+    <!---->
+</div>
+</body>
+</html>

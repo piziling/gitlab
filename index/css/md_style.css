@@ -1,0 +1,36 @@
+.md_container {
+    width: fit-content;
+    margin: 50px auto 50px auto;
+    padding: 50px 200px 80px 200px;
+    border-radius: 20px;
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.1), 0 20px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #159957;
+}
+
+code {
+    word-wrap: break-word;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin: 0 2px;
+    color: #e96900;
+    background: #f8f8f8;
+}
+
+a {
+    text-decoration: none;
+    color: #1e6bb8;
+    word-wrap: break-word;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}

@@ -1,0 +1,6 @@
+test:
+  tags:
+    - python-runner ##注意这个是选择指定的runner
+  script:
+  - pip3 install -r requiresments.txt
+  - python3 run.py

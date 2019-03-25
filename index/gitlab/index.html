@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帮助文档</title>
+    <link href="http://my_domain.com/css/md_style.css" rel="stylesheet">
+</head>
+<body>
+<div class="md_container">
+    <!---->
+    <h1> 代码服务器指引</h1>
+
+    <hr/>
+
+    <h3>〇、开发流程</h3>
+
+    <p><img alt="gitlab 开发流程图" src="http://my_domain.com/gitlab/src/gitlab_flow.png"/></p>
+
+    <ul>
+        <li>只有项目的所有者（创建者）可以删除项目，其他成员不能进行此操作</li>
+    </ul>
+
+    <hr/>
+
+    <h3>一、gitlab 的管理原则</h3>
+
+    <h4>管理员</h4>
+
+    <ul>
+        <li><p>只创建成员、群组，不作具体项目的日常管理（因为管理员权限过大，所以要尽量避免其误操作）</p></li>
+        <li><p>公共项目只能由管理员创建，不能由普通用户创建（因为普通用户要参与日常维护，所以要防止其误删）</p></li>
+        <li><p>创建群组时：</p>
+            <ul>
+                <li><p>注意设置组员的最高权限</p></li>
+                <li><p>每个用户，尽量只归属于一个组，避免跨组</p></li>
+                <li><p>按照成员的工作属性分组，如：硬件组，算法组、销售组等等</p></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>普通用户</h4>
+
+    <ul>
+        <li><p>不能创建群组（避免群组混乱以及权限越界）</p></li>
+        <li><p>允许创建私人项目（必要时可以向管理员申请成为公共项目）</p></li>
+        <li><p>参与所属项目的日常开发和维护</p></li>
+    </ul>
+
+    <hr/>
+
+    <h3>二、公共项目的管理原则</h3>
+
+    <ul>
+        <li><p>管理员创建项目后，以群组的方式添加项目成员，避免用单个用户方式添加</p></li>
+        <li><p>根据组的属性分配权限</p></li>
+    </ul>
+
+    <h4>分支管理：</h4>
+
+    <ul>
+        <li><p>主分支：master</p>
+            <ul>
+                <li><p>严格保护的分支</p></li>
+                <li><p>禁止 <code>push</code> 和 <code>merge</code> 操作</p></li>
+                <li><p>当真的需要更新合并时，由管理员暂时解除merge保护，进行合并，完成后重新设置保护</p></li>
+                <li><p>每次新合并都打上一个 tags ，表示版本</p></li>
+            </ul>
+        </li>
+        <li><p>子分支：develop</p>
+            <ul>
+                <li><p>用于日常开发</p></li>
+                <li><p>允许成员申请 <code>merge</code> ，但禁止 <code>push</code></p></li>
+                <li><p>只能由管理员确认合并</p></li>
+                <li><p>当累积到一定的开发量后，可以申请合并到主分支上</p></li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr/>
+
+    <h3>三、项目成员的权限</h3>
+
+    <ul>
+        <li><a href="http://my_domain.com/gitlab/gitlab_permissions.html">gitlab项目成员权限</a></li>
+    </ul>
+    <!---->
+</div>
+</body>
+</html>
