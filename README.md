@@ -32,7 +32,7 @@
 
 ## 二、快速部署
 
-* `git clone git@github.com:bestHAI/gitlab.git`
+* `git clone https://github.com/bestHAI/gitlab.git`
 
 * `cd gitlab`
 
