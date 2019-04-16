@@ -1,21 +1,21 @@
 #!/bin/bash
 
-FILE_PREFIX=wiscom  # 相关文件名称
+FILE_PREFIX=domain_name  # 相关文件名称
 RSA_BITS_NUM=2048  # rsa 长度（位数）
 VALID_DAYS=3650  # 有效时间（天）
 
-PASS_RSA=wiscom  # 临时密码，最后会被清空
+PASS_RSA="HjkaIty45ajafjnWENla63872ab"  # 临时密码，最后会被清空
 
-# 生成证书要填写的信息
+# 1.生成证书要填写的信息
 CRT_COUNTRY_NAME=CN  # 国家
-CRT_PROVINCE_NAME=wiscom  # 洲/省
-CRT_CITY_NAME=Beijing  # 市
-CRT_ORGANIZATION_NAME=wiscom  # 组织名称
-CRT_ORGANIZATION_UNIT_NAME=wiscom  # 单位名称
+CRT_PROVINCE_NAME=GD  # 洲/省
+CRT_CITY_NAME=GZ  # 市
+CRT_ORGANIZATION_NAME=GH  # 组织名称
+CRT_ORGANIZATION_UNIT_NAME=NB  # 单位名称
 CRT_DOMAIN=*.my_domain.com  # 域名
 CRT_EMAIL=root@my_domain.com  # 邮箱
-CRT_EXTRA_CHALLENGE_PASSWD=wiscom  # 私钥保护密码
-CRT_EXTRA_OPTINAL_COMPANY_NAME=wiscom  # 公司名称
+CRT_EXTRA_CHALLENGE_PASSWD=domain_name  # 私钥保护密码
+CRT_EXTRA_OPTINAL_COMPANY_NAME=NB  # 公司名称
 
 # 2.1 生成私钥
 echo -e "\n---------------------------- 生成私钥 ----------------------------\n"
