@@ -44,7 +44,7 @@
 
 * 启动：
 
-  * `cd gitlab`
+  * 先进入上面下载好的gitlab工程目录，如果是压缩包需要自行解压
 
   * `chmod +x auto_run.sh && ./auto_run.sh 【IP】 【域名】 【名称】` 
 

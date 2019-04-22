@@ -24,6 +24,13 @@ then
     fi
     docker -v | tee -a "${init_log}"
 
+    # 下载镜像
+    docker pull gitlab/gitlab-ce
+    docker pull gitlab/gitlab-runner
+    docker pull analogic/poste.io
+    docker pull portainer/portainer
+    docker pull nginx
+
     # 初始化 swarm
     echo -e "\n>>> swarm init"
     docker swarm init | tee -a "${init_log}"
