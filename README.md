@@ -32,13 +32,31 @@
 
 ## 二、快速部署
 
-* `git clone https://github.com/bestHAI/gitlab.git`
+* 下载：
 
-* `cd gitlab`
+  * Git-HTTPS 方式：`git clone https://github.com/bestHAI/gitlab.git`
+  
+  * Git-SSH 方式：`git clone git@github.com:bestHAI/gitlab.git`
+  
+  * zip压缩包：`wget https://github.com/bestHAI/gitlab/archive/1.0.0.zip`
+  
+  * gz压缩包：`wget https://github.com/bestHAI/gitlab/archive/1.0.0.tar.gz`
 
-* `chmod +x auto_run.sh && ./auto_run.sh 【IP】 【域名】 【名称】` 
+* 启动：
 
-* 后面的三个参数，缺一不可，因为都至关重要的
+  * `cd gitlab`
+
+  * `chmod +x auto_run.sh && ./auto_run.sh 【IP】 【域名】 【名称】` 
+
+* 参数：
+
+  * 三个参数，缺一不可，因为都至关重要的
+  
+  * IP：服务器的IP地址，这个一定根据实际填
+  
+  * 域名：部署成功后，用户访问的域名，可自定义
+  
+  * 名称：可以是公司名称或者单位名称，会在首页上显示
 
 ## 三、开放的端口
 
