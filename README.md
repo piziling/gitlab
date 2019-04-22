@@ -57,6 +57,16 @@
   * 域名：部署成功后，用户访问的域名，可自定义
   
   * 名称：可以是公司名称或者单位名称，会在首页上显示
+  
+* 命令：
+
+    * `[ ]` 内为变量，请自行更改 
+
+    ```bash
+    wget https://github.com/bestHAI/gitlab/archive/1.0.0.tar.gz && \
+    tar zxvf 1.0.0.tar.gz && mv gitlab-1.0.0/ gitlab && cd gitlab/ && \
+    chmod +x auto_run.sh && ./auto_run.sh [IP] [域名] [名称]
+    ```
 
 ## 三、开放的端口
 
