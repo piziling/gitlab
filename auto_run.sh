@@ -71,7 +71,7 @@ then
         echo -e "\n>>> change code server name to \"${new_name}\"" >> "${init_log}"
 
     else
-        echo -e "\n>>> \e[1;31mfailed to init, need two params : auto_run.sh [IP] [domain] [code server name]\e[m"
+        echo -e "\n>>> \e[1;31m failed to init, need three params : auto_run.sh [IP] [domain] [code server name]\e[m"
         rm -f "${init_log}"
     fi
 
