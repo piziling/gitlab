@@ -90,7 +90,7 @@
 
 ## 五、服务架构
 
-![](https://raw.githubusercontent.com/bestHAI/gitlab/master/index/gitlab/src/server_architecture.png)
+![](index/gitlab/src/server_architecture.png)
 
 ## 六、工程目录结构
 
